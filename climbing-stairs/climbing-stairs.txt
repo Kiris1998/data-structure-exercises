@@ -1,11 +1,13 @@
 int climbingstairs(int n)    %爬楼梯主函数，n为楼梯阶数
 {
-	int firstLadder = 1,nextLadder = 1,climbingCounts = 2;    %动态规划，初始时，firstLadder为阶数为0时的攀登方法数，nextLadder 为阶数为1时的方法数，climbingCounts为下一个阶数时的方法数
-	if(n == 0 || n == 1)
+	int firstLadder = 1；
+	int nextLadder = 1；
+	int climbingCounts = 2;    //动态规划，初始时，firstLadder为阶数为0时的攀登方法数，nextLadder 为阶数为1时的方法数，climbingCounts为下一个阶数时的方法数
+	if(n == 0 || n == 1)   //阶梯数为0或1的情况
 	{
 		return climbingCounts = 1;
 	}
-	for(int i = 0;i < n - 2;i++)
+	for(int i = 0;i < n - 2;i++)  //阶梯数为2及以上开始动态求解方法数
 	{
 		firstLadder = nextLadder;
 		nextLadder = climbingCounts;
