@@ -1,6 +1,6 @@
-int climbingstairs(int n)
+int climbingstairs(int n)    %爬楼梯主函数，n为楼梯阶数
 {
-	int q = 1,p = 1,m = 2;
+	int q = 1,p = 1,m = 2;    %动态规划，初始时，q为阶数为0时的攀登方法数，p为阶数为1时的方法数，m为下一个阶数时的方法数
 	if(n == 0 || n == 1)
 	{
 		return m = 1;
