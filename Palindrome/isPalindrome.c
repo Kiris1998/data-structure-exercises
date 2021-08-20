@@ -10,11 +10,11 @@ bool isPalindrome(char *s)
 	{
 		while(left < right && !isalnum(s[left]))  //当为非字母或数字时，指针加一
 		{
-			++left;
+			left + = 1;
 		}
 		while(left < right && !isalnum(s[right]))  //当为非字母或数字时，指针减一
 		{
-			--right;
+			right -= 1;
 		}
 		if(tolower(s[left]) != tolower(s[right]))  //不相等时，输出为非回文串
 		{
