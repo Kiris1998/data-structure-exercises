@@ -6,6 +6,7 @@ int findKthLargestNum(int *nums,int numsSize,int k)
 	srand(time(0)); 
 	return quickSelect(nums,0,numsSize - 1,numsSize - k);
 }
+
 //nums为要查找的数组,min为划分后数组的左坐标，max为对应右坐标，index为要找的第k个最大数
 int quickSelect(int *nums,int min,int max,int index)  
 {
@@ -19,6 +20,7 @@ int quickSelect(int *nums,int min,int max,int index)
 		return q < index ? quickSelect(nums,q+1,max,index) : quickSelect(nums,0,q - 1,index);
 	}
 }
+
 //取一个随机数做中间元，其他参数与上一致
 int randNum(int *nums,int min,int max)  
 {
@@ -28,6 +30,7 @@ int randNum(int *nums,int min,int max)
 	nums[max] = temp;
 	return divideQue(nums,min,max);
 }
+
 //将小于随机数对应数的全放入数组最左侧，不管是否排好序，其他参数与上一致
 int divideQue(int *nums,int min,int max) 
 {
@@ -36,7 +39,7 @@ int divideQue(int *nums,int min,int max)
 	{
 		if(nums[j] <= nums[max])  //若右指针的数小于中间元，则与左指针交换
 		{
-			int temp = nums[++i];
+			int temp = nums[i += 1];
 			nums[i] = nums[j];
 			nums[j] = temp;
 		}

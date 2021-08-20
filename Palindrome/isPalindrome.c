@@ -20,8 +20,8 @@ bool isPalindrome(char *s)
 		{
 			return false;
 		}
-		++left;
-		--right;
+		left += 1;
+		right -= 1;
 	}
 	return true;
 }
