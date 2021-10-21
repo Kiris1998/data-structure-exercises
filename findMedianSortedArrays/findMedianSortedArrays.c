@@ -15,16 +15,10 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
 		{
 			next = nums1[firArray];  //下一个数在第一数组上
 			firArray = firArray + 1;  //指针往前进一
-		}
-		else  //反之更新第二数组指针
-		{
-			next = nums2[secArray];
-			secArray = secArray + 1;
-		}
+			continue;  //符合条件则跳出本次for循环，继续下次循环
+		}  
+		next = nums2[secArray];  //反之更新第二数组指针
+		secArray = secArray + 1;
 	}
-	if(length % 2 == 0)  //长度为偶数时
-	{
-		return (cur + next) / 2.0;
-	}
-	return next;  //长度为奇数时
+	return length % 2 == 0 ? return (cur + next) / 2.0 : next; //长度为偶数时选前者,长度为奇数时选后者
 }
