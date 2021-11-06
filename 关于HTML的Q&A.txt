@@ -1,14 +1,119 @@
 1.html标签语义化意义 ？
 一个语义元素能够清楚地描述其意义给浏览器和开发者
+例如：无语意元素<div>和<span>-无需考虑内容
+而语义元素<form>,<table>和<img>-清楚的定义了它的内容
+
 2.html5增加了哪些新功能？
 新元素，新属性，2D/3D制图，多媒体播放，本地存储，本地SQL数据，Web应用
+<canvas>标签通过脚本（通常是 JavaScript）来绘制图形（比如图表和其他图像）。属性：height、width
+多媒体元素：<audio>定义音频内容。属性：autoplay（如果出现该属性，则音频在就绪后马上播放。）；controls（如果出现该属性，则向用户显示音频控件（比如播放/暂停按钮））；loop（如果出现该属性，则每当音频结束时重新开始播放。）；muted（如果出现该属性，则音频输出为静音。）；preload（规定当网页加载时，音频是否默认被加载以及如何被加载。）；src（规定音频文件的 URL。）
+
+<video> 标签定义视频，比如电影片段或其他视频流。
+属性          值            描述
+autoplay	autoplay	如果出现该属性，则视频在就绪后马上播放。
+controls	controls	如果出现该属性，则向用户显示控件，比如播放按钮。
+height	pixels	设置视频播放器的高度。
+loop	loop	如果出现该属性，则当媒介文件完成播放后再次开始播放。
+muted	muted	如果出现该属性，视频的音频输出为静音。
+poster	URL	规定视频正在下载时显示的图像，直到用户点击播放按钮。
+preload	auto/metadata/none	如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。
+srcNew	URL	要播放的视频的 URL。
+width	pixels	设置视频播放器的宽度。
+
+<source> 标签为媒体元素（比如 <video> 和 <audio>）定义媒体资源。
+属性	值	                 描述
+media	media_query	规定媒体资源的类型，供浏览器决定是否下载。
+src	URL	                规定媒体文件的 URL。
+type	MIME_type	规定媒体资源的 MIME 类型。
+
+<embed> 标签定义了一个容器，用来嵌入外部应用或者互动程序（插件）。
+属性	值	描述
+height	pixels	规定嵌入内容的高度。
+src	URL	规定被嵌入内容的 URL。
+type	MIME_type	规定嵌入内容的 MIME 类型。
+width	pixels	规定嵌入内容的宽度。
+
+<track> 标签为媒体元素（比如 <audio> and <video>）规定外部文本轨道，也就是字幕，字幕格式有 WebVTT 格式（.vtt 格式文件）。
+属性	值	描述
+default	default	规定该轨道是默认的。如果用户没有选择任何轨道，则使用默认轨道。
+kind	captions/chapters/descriptions/metadata/subtitles	规定文本轨道的文本类型。
+label	text	规定文本轨道的标签和标题。
+src	URL	必需的。规定轨道文件的 URL。
+srclang	language_code	规定轨道文本数据的语言。如果 kind 属性值是 "subtitles"，则该属性是必需的。
+
+新表单元素:
+标签	                描述
+<datalist>	定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
+<keygen>	规定用于表单的密钥对生成器字段。
+<output>	                定义不同类型的输出，比如脚本的输出。
+
+新的语义和结构元素:
+标签	描述
+<article>	定义页面独立的内容区域。
+<aside>	定义页面的侧边栏内容。
+<bdi>	允许您设置一段文本，使其脱离其父元素的文本方向设置。
+<command>	定义命令按钮，比如单选按钮、复选框或按钮
+<details>	用于描述文档或文档某个部分的细节
+<dialog>	定义对话框，比如提示框
+<summary>	标签包含 details 元素的标题
+<figure>	规定独立的流内容（图像、图表、照片、代码等等）。
+<figcaption>	定义 <figure> 元素的标题
+<footer>	定义 section 或 document 的页脚。
+<header>	定义了文档的头部区域
+<mark>	定义带有记号的文本。
+<meter>	定义度量衡。仅用于已知最大和最小值的度量。
+<nav>	定义导航链接的部分。
+<progress>	定义任何类型的任务的进度。
+<ruby>	定义 ruby 注释（中文注音或字符）。
+<rt>	定义字符（中文注音或字符）的解释或发音。
+<rp>	在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容。
+<section>	定义文档中的节（section、区段）。
+<time>	定义日期或时间。
+<wbr>	规定在文本中的何处适合添加换行符。
+
+localStorage 对象:存储的数据没有时间限制。
+保存数据：localStorage.setItem(key,value);
+读取数据：localStorage.getItem(key);
+删除单个数据：localStorage.removeItem(key);
+删除所有数据：localStorage.clear();
+得到某个索引的key：localStorage.key(index);
+
+sessionStorage 对象:针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+
+HTML5 Web SQL 数据库:Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。
+openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。
+transaction：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。
+executeSql：这个方法用于执行实际的 SQL 查询。
+
+HTML5 应用程序缓存:使用 HTML5，通过创建 cache manifest 文件，可以轻松地创建 web 应用的离线版本。
+离线浏览 - 用户可在应用离线时使用它们
+速度 - 已缓存资源加载得更快
+减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
 3.meta元素有哪些作用？
 meta标签里的数据是供机器解读的，起主要作用有：搜索引擎优化（SEO），定义页面使用语言，自动刷新并指向新的页面，实现页面转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口等。
+属性：
+content：设置或返回 <meta> 元素的 content 属性的值。
+httpEquiv：把 content 属性连接到一个 HTTP 头部。
+name：把 content 属性连接到某个名称。
+scheme：设置或返回用于解释 content 属性的值的格式。
+基本标签：
+声明文档使用的字符编码<meta charset='utf-8'> <!-- 声明文档使用的字符编码 -->（有更加标准的lang属性写法）
+SEO优化：
+页面描述：<meta name="description" content="不超过150个字符" /> <!-- 页面描述 -->
+页面关键字：<meta name="keywords" content=""/> <!-- 页面关键词 -->
+页面标题：<title>标题</title>
+定义网页作者：<meta name="author" content="name, email@gmail.com" /> <!-- 网页作者 -->
+定义网页搜索引擎方式<meta name="robots" content="index,follow" /> <!-- 搜索引擎抓取 -->
+可选标签包括移动设备ios、安卓、iPad等，Windows8及其它
+
 4.html dom声明作用？
 html dom定义了访问和操作HTML文档的标准，它允许程序和脚本动态地访问和更新文档的内容、样式和结构。
+
 5.标准盒模型和怪异盒（ie盒）模型的区别？
 标准盒模型的width和height是指内容区域（content）的width和height，标准模式下，一个块的总长度=width+margin（左和右）+padding（左和右）+border（左和右）
 怪异盒模型的width和height是指边界区域（border）的width和height，在怪异模式下，一个块的总长度=width+margin（左和右）
+
 6.css选择器的分类？
 一、通配符（全局）选择器
 样式：*{}
@@ -28,6 +133,10 @@ B只能为A的子级，不能跨级选择
 六、包含（后代）选择器
 样式：A B{}
 级别从左到右递减，不必逐级选择
+
 7.浏览器是如何根据选择器规则匹配出元素的？
 浏览器对CSS的匹配规则是从右到左，从下到上的
-对于一个特定的一组选择器，先产生所有元素集合，然后向上匹配，如果不符合上一个部分，如果不匹配就把元素从集合中删除，直到整个选择器都匹配完，还在集合中的元素就是符合这一组选择器的
+于一个特定的一组选择器，先产生所有元素集合，然后向上匹配，如果不符合上一个部分，如果不匹配就把元素从集合中删除，直到整个选择器都匹配完，还在集合中的元素就是符合这一组选择器的
+
+8.CSS优先级？
+！important(不推荐)>内联样式>id选择器>类选择器=属性选择器=伪类选择器>标签选择器=伪元素选择器
