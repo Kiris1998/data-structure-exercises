@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第五面骰子</title>
+        <link rel="stylesheet" type="text/css" href="E:\runoob\dice.css">
+        <style>
+            .fifth-face
+            {
+                display: flex;
+                justify-content: space-between;
+            }
+            .fifth-face .column1, .fifth-face .column3
+            {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .fifth-face .column2
+            {
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="fifth-face">
+            <div class="column1">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+            <div class="column2">
+                <span class="pip"></span>
+            </div>
+            <div class="column3">
+                <span class="pip"></span>
+                <span class="pip"></span>
+            </div>
+        </div>
+    </body>
+</html>
