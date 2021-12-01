@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆瓣读书</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .global-nav {
+            height: 28px;
+            background-color: #545652;
+            min-width: 950px;
+            font: 12px Helvetica,Arial,sans-serif;
+            line-height: 1.62;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .global-nav .top-nav-info {
+            margin: 0 12px 0 0;
+            line-height: 28px;
+        }
+
+        .global-nav  a {
+            cursor: pointer;
+            text-decoration: none;
+            margin: 0;
+            padding: 0 12px;
+            height: 28px;
+            color: rgb(233, 227, 227);
+        }
+
+        .global-nav a:hover {
+            color:white;
+        }
+
+        .global-nav .global-nav-items {
+            position: relative;
+            float: right;
+            margin: 0 12px 0 0;
+            line-height: 28px;
+        }
+
+        .global-nav .global-nav-items ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .global-nav .global-nav-items li {
+            display: inline-block;
+            zoom: 1;
+            font-size: 12px;
+            vertical-align: baseline;
+        }
+
+        .global-nav .top-nav-doubanapp {
+            position: relative;
+            float: right;
+            margin: 0 12px 0 0;
+            line-height: 28px;
+        }
+
+
+        .first {
+            display: flex;
+            background: #f6f6f1;
+            width: 100%;
+            height: 70px;
+            border-color: #e9e9e2;
+            border-bottom: 1px solid #e5ebe4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .first .db-nav-book {
+            display: flex;
+            width: 1040px;
+            height: 70px;
+        }
+
+        .first .db-nav-book .logo {
+            display: flex;
+            justify-content: left;
+            height: 56px;
+            width: 100px;
+            margin: 20px 13px 0 0;
+        }
+
+        .first .nav-search {
+            display: flex;
+            justify-content: left;
+        }
+
+        .first .search_form {
+            display: flex;
+            width: 500px;
+            height: 30px;
+            margin: 18px 13px 0 50px;
+        }
+
+        .input_text{
+            width: 400px;
+            height: 30px;
+            border: 1PX solid gray;
+            padding: 0px;
+            outline: none;
+            float: left;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .input_sub{
+            width: 40px;
+            height: 32px;
+            background-color: gray;
+            border: 0px;
+            float: left;
+            color: white;
+            cursor: pointer;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+        }
+
+        .second {
+            display: flex;
+            background: #f6f6f1;
+            width: 100%px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-sec {
+            display: flex;
+            width: 1040px;
+            height: 40px;
+        }
+        
+        .nav-sec ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 12px 0 0 0;
+            position: relative;
+            right: 10px;
+        }
+
+        .nav-sec li {
+            display: inline-block;
+            zoom: 1;
+            font-size: 14px;
+            vertical-align: baseline;
+        }
+
+        .nav-sec a {
+            cursor: pointer;
+            text-decoration: none;
+            margin: 0;
+            padding: 0 12px;
+            height: 28px;
+            color: #614e3c;
+        }
+
+        .nav-sec .book {
+            display: flex;
+            float: right;
+            width: 200px;
+            height: 96px;
+        }
+
+        .third {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .third .ad {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1040px;
+            height: 100px;
+            position: relative;
+            top: 20px;
+        }
+        .third .ad img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1040px;
+            height: 100px;
+        }
+
+
+        .forth {
+            min-height: 420px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top: 20px;
+        }
+
+        .forth .article {
+            width: 1040px;
+            float: left;
+            display: flex;
+
+        }
+
+        .forth .article .sections_book {
+            margin-bottom: 65px;
+            width: 675px;
+            display: flex;
+        }
+
+        .forth .hd h2 {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e5ebe4;
+        }
+
+        .section_book h2 {
+            font-size: 18px;
+        }
+
+        .forth .article .sections_book .hd h2 .tags {
+            flex: 1;
+            font-size: 13px;
+            color: #9B9B9B;
+            letter-spacing: 0;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+
+        .tags .item {
+            margin: 1px;
+        }
+
+        .link-more {
+            margin: 0 0 0 30px;
+            
+        }
+        .link-more a {
+            text-decoration: none;
+        }
+
+        .bd .carousel {
+            height: 489px;
+            overflow: hidden;
+            position: relative;
+            width: 675px;
+        }
+
+        .carousel ul {
+            display: flex;
+            flex-wrap: wrap;
+            width: 700px;
+            font-size: 0;
+            margin: 0 0 0 0;
+            vertical-align: top;
+            list-style: none;
+            padding: 0;
+        }
+
+        .carousel li {
+            width: 115px;
+            margin: 0 25px 15px 0;
+            float: none;
+            display: inline-block;
+            vertical-align: top;
+            zoom: 1;
+
+        }
+
+        .list-express .cover {
+            width: 115px;
+            height: 172px;
+            margin-bottom: 7px;
+            overflow: hidden;
+        }
+
+        .list-express .cover a {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .list-express .cover a:link {
+            color: #3377aa;
+            text-decoration: none;
+        }
+
+        .list-express .cover img {
+            display: block;
+            max-width: 115px;
+            max-height: 172px;
+            align-self: flex-end;
+        }
+        a img {
+            border-width: 0;
+            vertical-align: middle;
+        }
+
+        .list-express .info {
+            padding: 0 2px;
+            margin: 0;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            color: #666;
+        }
+
+        .list-express .title {
+            font-size: 14px;
+            margin-bottom: 6px;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .list-express .title a {
+            text-decoration: none;
+        }
+
+        .list-express .author {
+            color: #333;
+            width: 102px;
+            font-size: 13px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .more-meta {
+            display: none;
+        }
+
+        .bd .slide-controls {
+            margin: 0 auto;
+            float: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .bd .slide-btns {
+            display: inline-block;
+            zoom: 1;
+            vertical-align: middle;
+            line-height: 1;
+        }
+
+
+        .bd .slide-btns a {
+            font-weight: bold;
+        }
+        .bd .slide-btns a:link {
+            color: #fff;
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            zoom: 1;
+            font: 100 16px Arial;
+            text-align: center;
+            line-height: 16px;
+            margin-left: 4px;
+            outline: none;
+            border-radius: 9px;
+            background: #9b9a8e;
+            text-decoration: none;
+        }
+
+        .bd .slide-controls .slide-dots {
+            padding: 0;
+            display: inline-block;
+            zoom: 1;
+            font-size: 0;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        ol {
+            list-style: none;
+        }
+
+        .slide-dots li {
+            display: inline;
+        }
+
+        .slide-dots a.active {
+            background-color: #9b9a8f;
+        }
+
+        .slide-dots a {
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            zoom: 1;
+            margin-left: 8px;
+            border-radius: 5px;
+            background: #dfdfdf;
+        }
+
+        .book {
+            display: flex;
+            position: absolute;
+            right: 280px;
+            top: 30px;
+        }
+
+        .book img {
+            width: 186px;
+            height: 96px;
+        }
+    </style>
+</head>
+<body>
+    <div class="global-nav">
+
+        <div class="global-nav-items">
+            <ul>
+                <li class="">
+                    <a href="https://www.douban.com" target="_blank" >豆瓣</a>
+                </li>
+                <li>
+                    <a href="https://book.douban.com/" target="_blank" >读书</a>
+                </li>
+                <li>
+                    <a href="https://movie.douban.com/" target="_blank" >电影</a>
+                </li>
+                <li>
+                    <a href="https://music.douban.com/" target="_blank" >音乐</a>
+                </li>
+                <li>
+                    <a href="https://www.douban.com/location" target="_blank" >同城</a>
+                </li>
+                <li>
+                    <a href="https://www.douban.com/group" target="_blank" >小组</a>
+                </li>
+                <li>
+                    <a href="https://read.douban.com/?dcs=top-nav&dcm=douban" target="_blank" >阅读</a>
+                </li>
+                <li>
+                    <a href="https://douban.fm/?from_=shire_top_nav" target="_blank" >FM</a>
+                </li>
+                <li>
+                    <a href="https://time.douban.com/?dt_time_source=douban-web_top_nav" target="_blank" >时间</a>
+                </li>
+                <li>
+                    <a href="https://market.douban.com/?utm_campaign=douban_top_nav&utm_source=douban&utm_medium=pc_web" target="_blank" >豆品</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="top-nav-doubanapp" style="float: right;">
+                <a href="https://www.douban.com/doubanapp/app?channel=top-nav" class="lnk-doubanapp">下载豆瓣客户端</a>
+            </div>
+    
+            <div class="top-nav-info" style="float: right;">
+                <a href="https://accounts.douban.com/passport/login?source=book" class="nav-login" rel="nofollow">登录/注册</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="first">
+        <div class="db-nav-book">
+            <div class="logo">
+                <a href="https://book.douban.com/"><img src="E:\HTML\doubandushu_project\douban_logo.png"></a>
+            </div>
+            <div class="nav-search">
+            <form class="search_form">
+                <input type="text" class="input_text" placeholder="书名、作者、ISBN">
+                <input type="submit" value="搜索" class="input_sub">
+            </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="second">
+        <div class="nav-sec">
+            <ul>
+                <li><a href="https://book.douban.com/cart/">购书单</a>
+                </li>
+                <li><a href="https://read.douban.com/ebooks/?dcs=book-nav&amp;dcm=douban" target="_blank">电子图书</a>
+                </li>
+                <li><a href="https://market.douban.com/book?utm_campaign=book_nav_freyr&amp;utm_source=douban&amp;utm_medium=pc_web">豆瓣书店</a>
+                </li>
+                <li><a href="https://book.douban.com/annual/2020?source=navigation" target="_blank">2020年度榜单</a>
+                </li>
+                <li><a href="https://www.douban.com/standbyme/2020?fullscreen=true&amp;hidenav=true&amp;autorotate=false&amp;source=book_navigation" target="_blank">2020书影音报告</a>
+                </li>
+                <li class=" book-cart"><a href="https://market.douban.com/cart/?biz_type=book&amp;utm_campaign=book_nav_cart&amp;utm_source=douban&amp;utm_medium=pc_web" target="_blank">购物车</a>
+                </li>
+              </ul>
+    
+              <div class="book">
+                <a href="https://book.douban.com/annual/2020?source=book_navigation" class="bookannual"><img src="E:\HTML\doubandushu_project\dushubang_logo.png"></a>
+              </div>
+        </div>
+    </div>
+    
+    <div class="third">
+        <div class="ad">
+            <a href="https://www.douban.com/note/817964658/?utm_source=douban&utm_medium=douban-book-ad&utm_campaign=recommend1118"><img src="E:\HTML\doubandushu_project\guanggao_logo.jpg"></a>
+        </div>
+    </div>
+    
+
+    <div class="forth">
+        <div class="article">
+            <div class="sections_book">
+                <div class="hd" style="padding-bottom: 3px;margin-bottom: 16px;border-bottom: 1pxsolid #ddd;">
+                    <h2 class >
+                        <span class="title">新书速递</span>
+                        <div class="tags" style="font-size: 13px;">
+                            <span class="item active" data-tag="全部">全部</span>
+                            <span class="item " data-tag="文学">文学</span>
+                            <span class="item " data-tag="小说">小说</span>
+                            <span class="item " data-tag="历史文化">历史文化</span>
+                            <span class="item " data-tag="社会纪实">社会纪实</span>
+                            <span class="item " data-tag="科学新知">科学新知</span>
+                            <span class="item " data-tag="艺术设计">艺术设计</span>
+                            <span class="item " data-tag="影视戏剧">影视戏剧</span>
+                            <span class="item " data-tag="商业经管">商业经管</span>
+                            <span class="item " data-tag="绘本漫画">绘本漫画</span>
+                        </div>
+                        <span class="link-more" style="font-size: 13px;">
+                            <a class="" href="/latest?tag=全部" target="_blank">更多»</a>
+                          </span>
+                    </h2>
+
+                    <div class="bd">
+                        <div class="carousel">
+                            <ul class="list-col list-col5 list-express slide-item">
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35635639/?icn=index-latestbook-subject" title="法治的细节">
+                                      <img src="https://img3.doubanio.com/view/subject/s/public/s34025530.jpg" alt="法治的细节">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35635639/?icn=index-latestbook-subject" title="法治的细节">法治的细节</a>
+                                    </div>
+                                    <div class="author">
+                                      罗翔
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        法治的细节
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          罗翔
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-11
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          云南人民出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        ◎编辑推荐：
+                      ◇2020年度法治人物、中国政法大学罗翔教授全新法律随笔，解读热点案件，思辨法治要义。
+                      ◇集结罗翔近两年对法治与社会的观察，论法理、聊读书、谈爱情，人间清醒与你坦诚相见。
+                      ◇盘点近年热点案件，理性而不失温度，从N号房事件到张玉环案，如何在现实中追求正义？
+                      ◇从法律视角破解电车难题，思辨刑罚边界、胎儿权利等法理冲突，在时事中保持理性思考
+                      ...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35603043/?icn=index-latestbook-subject" title="施剑翘复仇案">
+                                      <img src="https://img2.doubanio.com/view/subject/s/public/s34016122.jpg" alt="施剑翘复仇案">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35603043/?icn=index-latestbook-subject" title="施剑翘复仇案：民国时期公众同情的兴起与影响">施剑翘复仇案：民国时期公众同情的兴起与影响</a>
+                                    </div>
+                                    <div class="author">
+                                      {美}林郁沁
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        施剑翘复仇案：民国时期公众同情的兴起与影响
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          {美}林郁沁
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-10-1
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          江苏人民出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        本书围绕1935年施剑翘在佛堂射杀军阀孙传芳这一扣人心弦的历史事件，通过对媒体、政治和法律档案的详尽调查，展示了施剑翘设法为父复仇、吸引媒体注意并争取公众同情的策略。作者认为这一事件之所以能引起轰动并激发同情，是因为它与性别规范之论争、法制改革与法外正义孰轻孰重以及国民党政府扩张威权统治等更大的社会性问题联系了起来。在这次审判事件中人们关注...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35596566/?icn=index-latestbook-subject" title="神曲（全三册）">
+                                      <img src="https://img9.doubanio.com/view/subject/s/public/s33997406.jpg" alt="神曲（全三册）">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35596566/?icn=index-latestbook-subject" title="神曲（全三册）：地狱篇·炼狱篇·天堂篇（全三册）">神曲（全三册）：地狱篇·炼狱篇·天堂篇（全三册）</a>
+                                    </div>
+                                    <div class="author">
+                                      [意] 但丁·阿利格耶里
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        神曲（全三册）：地狱篇·炼狱篇·天堂篇（全三册）
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          [意] 但丁·阿利格耶里
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-11
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          理想国丨海南出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        ★梁文道专文导读，黄国彬意大利语原文直译，华语世界首部三韵体《神曲》中文全译本。
+                      ★翻译名家黄国彬集二十年之功打磨经典译本，极致音义推敲，忠实还原《神曲》格律之美。近百种原本及译本交叉考证，逾四千条人物典故及历史注释，用详尽注文点亮《神曲》背后的大千世界。
+                      ★收录135幅十九世纪木刻大师古斯塔夫·多雷的木刻插画，精细刻绘诗人朝圣之旅，尽展大师原...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35653484/?icn=index-latestbook-subject" title="乘雁集">
+                                      <img src="https://img9.doubanio.com/view/subject/s/public/s34040864.jpg" alt="乘雁集">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35653484/?icn=index-latestbook-subject" title="乘雁集">乘雁集</a>
+                                    </div>
+                                    <div class="author">
+                                      周运
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        乘雁集
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          周运
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-11
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          上海文艺出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        “自己的书斋不可给人家看见，因为这是危险的事，怕被看去了自己的心思。”本书作者周运所做的便是打开学者书斋的一角，让我们得以探头看看内里的风景。
+                      周运以国家图书馆所藏近现代学人藏书，和淘书所得西文藏书为依托，为我们闲闲道来书籍流传的因缘趣事，以及书中批注所透露的治学线索。这些学者包括严复、傅斯年、毛子水、威廉·詹姆斯等。
+                      作者用力最深的当属“周...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35666053/?icn=index-latestbook-subject" title="内向者的优势">
+                                      <img src="https://img2.doubanio.com/view/subject/s/public/s34045212.jpg" alt="内向者的优势">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35666053/?icn=index-latestbook-subject" title="内向者的优势：写给内向者的职场进击指南">内向者的优势：写给内向者的职场进击指南</a>
+                                    </div>
+                                    <div class="author">
+                                      张瀞仁
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        内向者的优势：写给内向者的职场进击指南
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          张瀞仁
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-11-25
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          江苏凤凰文艺出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        谁说安静的内向者没有当营销专家的本钱？谁说话不多的内向者成为职场导师没有说服力？
+                      坚信Success is an inside job（成功是一种内在的工作）的作者张瀞仁，就以超级内向者的身份现身说法，描述了她长期以来与外向文化之间的搏斗史，破除一般人对内向者的既定印象与框架。
+                      她告诉读者：内向者拥有良好的协调能力、深度的思考能力，能够心无旁骛地专注于自身专业领域，...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35669109/?icn=index-latestbook-subject" title="伊朗">
+                                      <img src="https://img2.doubanio.com/view/subject/s/public/s34046681.jpg" alt="伊朗">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35669109/?icn=index-latestbook-subject" title="伊朗：被低估的文明与未完成的变革">伊朗：被低估的文明与未完成的变革</a>
+                                    </div>
+                                    <div class="author">
+                                      [英]迈克尔•阿克斯沃西
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        伊朗：被低估的文明与未完成的变革
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          [英]迈克尔•阿克斯沃西
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-12-1
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          浙江人民出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        伊朗（波斯）是世界上最重要的文明之一，也是全球为数不多仍保持着自身文明独特性的国家。时至今日，作为具有广泛区域影响力的伊斯兰大国，伊朗以其丰富的能源储备深度融入全球经济。即便如此，伊朗看起来却一直与西方世界格格不入。为什么伊朗政府公然表示不愿适应西方意识形态？伊朗何时、何故转为什叶派国家？哪些因素诱发了1979年的伊斯兰革命？伊朗的核计划真...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35599941/?icn=index-latestbook-subject" title="自转时公转的都小姐">
+                                      <img src="https://img1.doubanio.com/view/subject/s/public/s33996909.jpg" alt="自转时公转的都小姐">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35599941/?icn=index-latestbook-subject" title="自转时公转的都小姐">自转时公转的都小姐</a>
+                                    </div>
+                                    <div class="author">
+                                      [日]山本文绪
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        自转时公转的都小姐
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          [日]山本文绪
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-10-1
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          天津人民出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        ★ 直木奖得主山本文绪暌违7年全新代表作。
+                      ★ 新海诚感动推荐，林真理子力赞！
+                      ★ 自转时公转，是每一个平凡女性的生存现状。一边要做家务，一边要照顾家人，一边还要开足马力地去工作……身为女性，就必须结婚生子、打拼事业、照顾父母吗？本书写出了所有平凡女性的心声，和那些不曾被理解的琐碎和孤独。“兼顾工作与家庭”，或许是对女性励志又残忍的谎言。
+                      ★ 日本女...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35556939/?icn=index-latestbook-subject" title="我深爱我们一起相处的这些夜晚">
+                                      <img src="https://img9.doubanio.com/view/subject/s/public/s33977666.jpg" alt="我深爱我们一起相处的这些夜晚">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35556939/?icn=index-latestbook-subject" title="我深爱我们一起相处的这些夜晚：美国当代诗选">我深爱我们一起相处的这些夜晚：美国当代诗选</a>
+                                    </div>
+                                    <div class="author">
+                                      唐小兵 编译
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        我深爱我们一起相处的这些夜晚：美国当代诗选
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          唐小兵 编译
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-10
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          上海文艺出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        没有哪个创作群像能像美国当代诗歌那样，愿意以极尽精微的词语辨色卡，逐条比照我们生活与心理地形图中渐变的等高线。词语在经验现实中寻猎，随时咬合其捕获物，这在情诗中尤为瞩目。
+                      本书编选露易丝·格吕克、弗罗斯特·甘德、马克·斯特兰德、玛雅·安吉洛等21位美国当代诗人的69首代表作，无一不围绕陡然而发的情欲、长期容忍的谎言、剧情展演般的调情、异地恋难...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35582653/?icn=index-latestbook-subject" title="太空居民">
+                                      <img src="https://img2.doubanio.com/view/subject/s/public/s34004472.jpg" alt="太空居民">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35582653/?icn=index-latestbook-subject" title="太空居民：人类将如何在无垠宇宙中定居">太空居民：人类将如何在无垠宇宙中定居</a>
+                                    </div>
+                                    <div class="author">
+                                      〔美〕克里斯托弗·万杰克
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        太空居民：人类将如何在无垠宇宙中定居
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          〔美〕克里斯托弗·万杰克
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-10
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          社会科学文献出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        ★ 航天工程管理与测控技术专家、中国工程院院士沈荣骏，军委科技委创新特区领域首席科学家、原国家高技术（863）航天航空领域专家组组长袁建平专文推荐
+                      ★ 郑永春、毛新愿、大卫 · 布林等中外著名学者专家倾情推荐
+                      ★ NASA戈达德太空飞行中心资深作家克里斯托弗·万杰克又一力作
+                      ★ 系统地回答了人类要想在月球、火星、小行星、木卫四、土卫六……这些星球上定居，将要...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                        
+                                <li>
+                                  <div class="cover">
+                                    <a href="https://book.douban.com/subject/35597629/?icn=index-latestbook-subject" title="文学的读法">
+                                      <img src="https://img2.doubanio.com/view/subject/s/public/s33995572.jpg" alt="文学的读法">
+                                    </a>
+                                  </div>
+                                  <div class="info">
+                                    <div class="title">
+                                      <a href="https://book.douban.com/subject/35597629/?icn=index-latestbook-subject" title="文学的读法">文学的读法</a>
+                                    </div>
+                                    <div class="author">
+                                      [英] 特里·伊格尔顿&nbsp;/&nbsp;Terry Eagleton
+                                    </div>
+                                    <div class="more-meta">
+                                      <h4 class="title">
+                                        文学的读法
+                                      </h4>
+                                      <p>
+                                        <span class="author">
+                                          [英] 特里·伊格尔顿&nbsp;/&nbsp;Terry Eagleton
+                                        </span>
+                                        /
+                                        <span class="year">
+                                          2021-10
+                                        </span>
+                                        /
+                                        <span class="publisher">
+                                          后浪丨海峡文艺出版社
+                                        </span>
+                                      </p>
+                                      <p class="abstract">
+                                        
+                                        🔖  从大卫·科波菲尔到哈利·波特
+                      当代文学理论大师伊格尔顿如数家珍
+                      以诙谐的笔法，引领我们细读经典
+                      再次刷新人们对于文学的理解
+                      🔖  编辑推荐
+                      ◎ 当代评论大家特里·伊格尔顿写给普通读者的文学欣赏入门书，亦庄亦谐，雅俗共赏，带领读者领略慢读的技艺。
+                      ◎ 批评视野宽广，创作活力巨大，笔耕五十余年的伊格尔顿，跨出艰深的学术领域，聚焦核心问题，为大众撰写幽默风趣...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </li>
+                          </ul>
+                        </div>
+
+                        <div class="slide-controls">
+
+                            <div class="slide-btns">
+                              <a href="#" class="prev">‹</a>
+                            </div>
+                            <ol class="slide-dots">
+                              <li><a data-index="1" href="#" class="active"></a></li>
+                              <li><a data-index="1" href="#" class=""></a></li>
+                              <li><a data-index="1" href="#" class=""></a></li>
+                              <li><a data-index="1" href="#" class=""></a></li>
+                              <li><a data-index="1" href="#" class=""></a></li>
+                            </ol>
+                            <div class="slide-btns">
+                              <a href="#" class="next">›</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
