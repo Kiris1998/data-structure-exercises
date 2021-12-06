@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
+    <title>电脑全屏时钟网页版</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-width: 320px;
+            font-size: 18px;
+            background-color: #005fec;
+            color: #fff;
+            font-family: "楷体","微软雅黑";
+            text-align: center;
+            cursor: default;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .shijian {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 147px;
+        }
+        .shijian img {
+            width: 70px;
+            height: 100px;
+        }
+
+        .riqi {
+            text-shadow: 0 0 5px #fff;
+        }
+        .riqi p {
+            font: 16px/1em Arial;
+        }
+
+        .text {
+            font-family: "微软雅黑";
+        }
+
+        .submit {
+            font-size: 24px;
+        }
+    </style>
+    <script src="https://hm.baidu.com/hm.js?3aeca8011653b05560b6fd6e81e99c1f"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/head.js"></script>
+</head>
+<body>
+    <div class="shijian">
+        <img src="img/0.jpg">
+        <img src="img/0.jpg" style="margin: 0 15px 0 0;">
+        <img src="img/0.jpg">
+        <img src="img/0.jpg" style="margin: 0 15px 0 0;">
+        <img src="img/0.jpg">
+        <img src="img/0.jpg">
+    </div>
+    <div class="riqi" style="font-size: 60.35px;">
+        <div>
+            2021年12月5日
+        </div>
+        <div>
+            星期日
+        </div>
+        <p>UTC +8</p>
+    </div>
+    <div class="text">
+        <p>电脑全屏时钟网页版，精确显示时分秒、年月日、星期，主要用于大屏投射。由服务器时间校准，协调世界时东八时区（UTC +8），即北京时间。</p>
+        <p>按下F11键或在浏览器选项中设置全屏，在下方先作简单设置，然后点击按钮显示全屏时钟。</p>
+        <form action method="post" name="form">
+            <label>
+                <input name="ys" type="radio" value="1" checked="CHECKED">
+                "蓝底白字"
+            </label>
+            <label>
+                <input name="ys" type="radio" value="2" checked="CHECKED">
+                "黑底白字"
+            </label>
+            <label>
+                <input name="ys" type="radio" value="3" checked="CHECKED">
+                "白底黑字"
+            </label>
+            <p>
+                <input class="submit" name="qp" type="submit" value="显示全屏时钟">
+            </p>
+        </form>
+    </div>
+    <script type="text/javascript">
+        function get() {
+            var img=document.getElementsByTagName('img');
+            var date=new Date();
+            var hour=date.getHours();
+            var minute=date.getMinutes();
+            var secind= date.getSeconds();
+            if(hour<10) {
+                hour='0'+hour;
+            }else if(minute<10) {
+                minute='0'+minute;
+            }else if(secind<10) {
+                secind='0'+secind;
+            }
+            console.log(hour);
+            img[0].src='img/'+parseInt(hour/10)+'.jpg';
+            img[1].src='img/'+hour%10+'.jpg';
+            img[2].src='img/'+parseInt(minute/10)+'.jpg';
+            img[3].src='img/'+minute%10+'.jpg';
+            img[4].src='img/'+parseInt(secind/10)+'.jpg';
+            img[5].src='img/'+secind%10+'.jpg';
+        }
+        get();
+        setInterval("get()",1000);
+    </script>
+</body>
+</html>
